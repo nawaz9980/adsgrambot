@@ -15,8 +15,6 @@ export default function Home() {
         gems={7}
         streak={2}
         tickets={11}
-        onBalanceClick={() => alert("Balance clicked!")}
-        onMenuClick={() => alert("Menu opened!")}
       />
 
       {/* Main Container */}

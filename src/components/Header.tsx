@@ -208,7 +208,7 @@ export default function Header({
           </div>
 
           {/* ================= RIGHT SECTION: Currencies & Hamburger / Close ================= */}
-          <div ref={dropdownRef} className="relative flex items-center gap-5 sm:gap-6 z-30">
+          <div className="flex items-center gap-5 sm:gap-6 z-30">
             {/* Gem */}
             <div className="flex items-center gap-1.5 cursor-pointer hover:opacity-80 transition">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -285,33 +285,34 @@ export default function Header({
                 </div>
               )}
             </button>
-
-            {/* ================= DROPDOWN MENU ================= */}
-            <div
-              className={`absolute top-[calc(100%+14px)] -right-4 sm:-right-6 w-[280px] sm:w-[300px] rounded-2xl bg-[#1c2035] border border-[#2b304c] border-b-[4px] border-b-[#121422] p-2.5 shadow-[0_25px_60px_rgba(0,0,0,0.7)] z-50 flex flex-col gap-1.5 transition-all duration-200 origin-top-right ${
-                dropdownOpen
-                  ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
-                  : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
-              }`}
-            >
-              {NAV_ITEMS.map((item) => (
-                <button
-                  key={item.label}
-                  type="button"
-                  onClick={() => setDropdownOpen(false)}
-                  className={`flex items-center gap-3.5 w-full px-4 py-3 rounded-xl transition-all text-left cursor-pointer ${item.bg}`}
-                >
-                  <span className={`shrink-0 flex items-center justify-center ${item.iconColor}`}>
-                    {item.icon}
-                  </span>
-                  <span className="text-[15px] font-bold text-white tracking-wide">
-                    {item.label}
-                  </span>
-                </button>
-              ))}
-            </div>
-
           </div>
+
+          {/* ================= DROPDOWN MENU (Anchored directly under header with clean gap) ================= */}
+          <div
+            ref={dropdownRef}
+            className={`absolute top-[calc(100%+14px)] right-0 w-[280px] sm:w-[300px] rounded-2xl bg-[#1c2035] border border-[#2b304c] border-b-[4px] border-b-[#121422] p-3 shadow-[0_25px_60px_rgba(0,0,0,0.7)] z-50 flex flex-col gap-2 transition-all duration-200 origin-top-right ${
+              dropdownOpen
+                ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
+                : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
+            }`}
+          >
+            {NAV_ITEMS.map((item) => (
+              <button
+                key={item.label}
+                type="button"
+                onClick={() => setDropdownOpen(false)}
+                className={`flex items-center gap-3.5 w-full px-4 py-3 rounded-xl transition-all text-left cursor-pointer ${item.bg}`}
+              >
+                <span className={`shrink-0 flex items-center justify-center ${item.iconColor}`}>
+                  {item.icon}
+                </span>
+                <span className="text-[15px] font-bold text-white tracking-wide">
+                  {item.label}
+                </span>
+              </button>
+            ))}
+          </div>
+
         </div>
 
         {/* Mobile XP Bar */}
