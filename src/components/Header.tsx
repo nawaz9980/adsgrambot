@@ -29,7 +29,7 @@ const NAV_ITEMS = [
   },
   {
     label: "My Winnings",
-    bg: "bg-[#2d2757] hover:bg-[#352e66]",
+    bg: "bg-[#352e5c] hover:bg-[#3d356b]",
     iconColor: "text-[#c4b5fd]",
     icon: (
       // FontAwesome faTicket
@@ -40,7 +40,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Referral",
-    bg: "bg-[#25324d] hover:bg-[#2b3a59]",
+    bg: "bg-[#2a3754] hover:bg-[#314062]",
     iconColor: "text-[#93c5fd]",
     icon: (
       // FontAwesome faShareNodes
@@ -51,7 +51,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Clans",
-    bg: "bg-[#34294d] hover:bg-[#3e315c]",
+    bg: "bg-[#382f4e] hover:bg-[#43375e]",
     iconColor: "text-[#d8b4fe]",
     icon: (
       // FontAwesome faShield
@@ -62,7 +62,7 @@ const NAV_ITEMS = [
   },
   {
     label: "My Rewards",
-    bg: "bg-[#383538] hover:bg-[#433f43]",
+    bg: "bg-[#3e3836] hover:bg-[#4a423f]",
     iconColor: "text-[#d1d5db]",
     icon: (
       // FontAwesome faGift
@@ -73,7 +73,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Withdraw",
-    bg: "bg-[#1f3a38] hover:bg-[#264744]",
+    bg: "bg-[#203c3e] hover:bg-[#27484a]",
     iconColor: "text-[#5eead4]",
     icon: (
       // FontAwesome faMoneyBill
@@ -353,20 +353,67 @@ export default function Header({
 
         {/* Mobile XP Bar */}
         <div className="mt-2.5 sm:mt-3.5 flex lg:hidden items-center justify-center w-full">
-          <div className="flex items-center gap-2.5 sm:gap-3 rounded-xl sm:rounded-2xl bg-[#151726] border border-[#272c48] border-b-[3px] border-b-[#0e1019] px-3.5 py-2 sm:px-4 sm:py-2.5 shadow-lg w-full max-w-[340px]">
-            <span className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg sm:rounded-xl bg-[#f59e0b] text-xs sm:text-sm font-black text-[#151726] shadow">
-              {level}
-            </span>
-            <div className="flex flex-col flex-1 min-w-0">
-              <div className="flex justify-between items-center text-xs font-bold text-white mb-1.5">
-                <span className="truncate max-w-[120px] font-extrabold text-[12px] sm:text-[13px]">{username}</span>
-                <span className="text-[11px] font-bold text-zinc-400 ml-2 sm:ml-3 shrink-0">
+          <div className="relative flex items-center gap-3 rounded-xl sm:rounded-2xl bg-[#171929] border border-[#252942] border-b-[3px] border-b-[#0e101a] px-3.5 py-2 sm:px-4 sm:py-2.5 shadow-lg w-full max-w-[360px] sm:max-w-[420px]">
+            {/* Golden Level Hexagon Badge (Scaled for Mobile) */}
+            <div className="relative z-10 flex h-[48px] w-[42px] shrink-0 items-center justify-center filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
+              <svg viewBox="0 0 64 72" className="absolute inset-0 h-full w-full">
+                {/* Left bottom wing tab */}
+                <polygon points="10,48 2,48 4,53 10,53" fill="#f59e0b" />
+                <polygon points="4,53 2,48 4,56 9,54" fill="#b45309" />
+
+                {/* Right bottom wing tab */}
+                <polygon points="54,48 62,48 60,53 54,53" fill="#f59e0b" />
+                <polygon points="60,53 62,48 60,56 55,54" fill="#b45309" />
+
+                {/* 3D Bottom Bevel Shadow under bottom point */}
+                <path
+                  d="M8 50 L32 66 L56 50"
+                  fill="none"
+                  stroke="#b45309"
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+
+                {/* Outer Hexagon with Thick Gold Border */}
+                <polygon
+                  points="32,5 56,17 56,49 32,63 8,49 8,17"
+                  fill="#181a29"
+                  stroke="#f59e0b"
+                  strokeWidth="4.5"
+                  strokeLinejoin="round"
+                />
+
+                {/* Inner Stitched / Dotted Accent Outline */}
+                <polygon
+                  points="32,9 52,19 52,47 32,59 12,47 12,19"
+                  fill="#1b1d2e"
+                  stroke="#fbbf24"
+                  strokeWidth="1.2"
+                  strokeDasharray="2.5 1.5"
+                  strokeLinejoin="round"
+                />
+              </svg>
+
+              {/* Level Number */}
+              <span className="relative z-10 text-[15px] font-black text-[#fbbf24] tracking-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] pb-0.5">
+                {level}
+              </span>
+            </div>
+
+            {/* Mobile Username & XP Bar */}
+            <div className="flex flex-col flex-1 min-w-0 justify-center">
+              <div className="flex justify-between items-center text-xs leading-none mb-1.5">
+                <span className="truncate max-w-[130px] sm:max-w-[160px] font-extrabold text-[12px] sm:text-[13px] text-white">
+                  {username}
+                </span>
+                <span className="text-[11px] sm:text-[12px] font-bold text-zinc-300 ml-2 shrink-0">
                   <strong className="text-white font-extrabold">{currentXp}</strong> / {maxXp} XP
                 </span>
               </div>
-              <div className="h-[7.5px] sm:h-[8px] w-full rounded-full bg-[#0d0f1a] overflow-hidden border border-[#21263d] p-[1px]">
+              <div className="h-[7.5px] sm:h-[8px] w-full rounded-full bg-[#10121d] overflow-hidden border border-[#1f2338] p-[0.5px]">
                 <div
-                  className="h-full rounded-full bg-gradient-to-r from-[#f59e0b] via-[#fbbf24] to-[#f59e0b] shadow-[0_0_8px_rgba(245,158,11,0.7)]"
+                  className="h-full rounded-full bg-[#f59e0b] shadow-[0_0_6px_rgba(245,158,11,0.5)] transition-all duration-300"
                   style={{ width: `${xpPercentage}%` }}
                 />
               </div>
