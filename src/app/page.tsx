@@ -1,10 +1,12 @@
 "use client";
 
 import Header from "@/components/Header";
+import PromoSection from "@/components/PromoSection";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#11121d] text-white">
+    <div className="min-h-screen flex flex-col bg-[#11121d] text-white">
       {/* Header with matching exact UI & 3D chunky borders */}
       <Header
         balance={19.58}
@@ -17,8 +19,11 @@ export default function Home() {
         tickets={11}
       />
 
+      {/* Promo Cards: Zultiball Lottery & Free Daily Gems Wheel */}
+      <PromoSection />
+
       {/* Main Container */}
-      <main className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+      <main className="mx-auto max-w-7xl px-4 py-16 sm:px-6 flex-1 w-full">
         <div className="rounded-2xl border border-[#2b2f48] border-b-[4px] border-b-[#141624] bg-[#202337]/70 p-8 sm:p-12 text-center shadow-xl">
           <h1 className="text-3xl font-black sm:text-5xl tracking-tight text-white">
             Welcome to <span className="text-[#8b5cf6]">zulti</span>
@@ -28,6 +33,9 @@ export default function Home() {
           </p>
         </div>
       </main>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
