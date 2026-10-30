@@ -12,6 +12,7 @@ export interface HeaderProps {
   streak?: number;
   tickets?: number;
   onBalanceClick?: () => void;
+  onMenuClick?: () => void;
 }
 
 const NAV_ITEMS = [
@@ -107,6 +108,7 @@ export default function Header({
   streak = 2,
   tickets = 11,
   onBalanceClick,
+  onMenuClick,
 }: HeaderProps) {
   const xpPercentage = Math.min(100, Math.max(0, (currentXp / maxXp) * 100));
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -203,7 +205,10 @@ export default function Header({
             <div ref={dropdownRef} style={{ position: "relative" }}>
               {/* Hamburger Button */}
               <button
-                onClick={() => setDropdownOpen((o) => !o)}
+                onClick={() => {
+                  setDropdownOpen((o) => !o);
+                  onMenuClick?.();
+                }}
                 type="button"
                 aria-label="Toggle navigation menu"
                 aria-expanded={dropdownOpen}
