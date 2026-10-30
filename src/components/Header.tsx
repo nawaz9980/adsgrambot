@@ -108,10 +108,10 @@ const NAV_ITEMS = [
 
 export default function Header({
   balance = 19.58,
-  level = 23,
-  username = "CriticalMead...",
-  currentXp = 66,
-  maxXp = 72,
+  level = 24,
+  username = "CriticalMeado...",
+  currentXp = 29,
+  maxXp = 79,
   gems = 7,
   streak = 2,
   tickets = 11,
@@ -138,20 +138,20 @@ export default function Header({
   }, [dropdownOpen]);
 
   return (
-    <header className="w-full bg-[#12131e] px-3 py-6 sm:px-6 select-none">
+    <header className="w-full bg-[#12131e] px-2.5 py-3 sm:px-6 sm:py-6 select-none">
       <div className="mx-auto max-w-7xl">
         {/* Main Floating Bar */}
-        <div className="relative flex h-[66px] sm:h-[70px] items-center justify-between rounded-2xl bg-[#202436] border-b-[4px] border-b-[#141624] px-4 sm:px-6 shadow-2xl">
+        <div className="relative flex h-[58px] sm:h-[66px] md:h-[70px] items-center justify-between rounded-xl sm:rounded-2xl bg-[#202436] border-b-[3px] sm:border-b-[4px] border-b-[#141624] px-2.5 sm:px-5 md:px-6 shadow-2xl">
 
           {/* ================= LEFT SECTION: Logo & 3D Balance Button ================= */}
-          <div style={{ display: "flex", alignItems: "center", gap: "20px", zIndex: 10 }}>
+          <div className="flex items-center gap-2 sm:gap-3.5 md:gap-5 z-10">
             {/* Zulti Logo */}
             <div style={{ display: "flex", alignItems: "center", cursor: "pointer" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="https://zulti.com/images/zulti-logo-b251bf00f76a64ceb7a4f8588fd1098c.svg?vsn=d"
                 alt="zulti logo"
-                style={{ height: "32px", width: "auto", display: "block" }}
+                className="h-[24px] sm:h-[28px] md:h-[32px] w-auto block"
               />
             </div>
 
@@ -159,47 +159,83 @@ export default function Header({
             <button
               onClick={onBalanceClick}
               type="button"
-              className="flex items-center justify-center gap-1 h-[42px] px-4 rounded-xl bg-[#27493f] border-b-[4px] border-[#18332b] shadow-md transition-all hover:brightness-105 active:translate-y-[2px] active:border-b-[2px] cursor-pointer"
+              className="flex items-center justify-center gap-1 h-[36px] sm:h-[40px] md:h-[42px] px-2.5 sm:px-3.5 md:px-4 rounded-lg sm:rounded-xl bg-[#27493f] border-b-[3px] sm:border-b-[4px] border-[#18332b] shadow-md transition-all hover:brightness-105 active:translate-y-[2px] active:border-b-[2px] cursor-pointer"
             >
-              <span className="text-[22px] font-black text-[#2cd46f]" style={{ lineHeight: 1, display: "flex", alignItems: "center" }}>
+              <span className="text-[18px] sm:text-[20px] md:text-[22px] font-black text-[#2cd46f]" style={{ lineHeight: 1, display: "flex", alignItems: "center" }}>
                 $
               </span>
-              <span className="text-[17px] font-extrabold text-white tracking-tight" style={{ lineHeight: 1, display: "flex", alignItems: "center" }}>
+              <span className="text-[14px] sm:text-[16px] md:text-[17px] font-extrabold text-white tracking-tight" style={{ lineHeight: 1, display: "flex", alignItems: "center" }}>
                 {balance.toFixed(2)}
               </span>
             </button>
           </div>
 
-          {/* ================= CENTER SECTION: Overlapping Level 23 Badge & XP ================= */}
+          {/* ================= CENTER SECTION: Overlapping Level Badge & XP ================= */}
           <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center z-20">
             <div className="relative flex items-center">
-              {/* Golden Level 23 Hexagon Badge */}
-              <div className="relative z-20 flex h-[78px] w-[68px] shrink-0 items-center justify-center -mr-3 filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.7)]">
-                <svg viewBox="0 0 66 76" className="absolute inset-0 h-full w-full">
-                  <polygon points="14,56 4,66 18,63" fill="#d97706" stroke="#b45309" strokeWidth="1.5" />
-                  <polygon points="52,56 62,66 48,63" fill="#d97706" stroke="#b45309" strokeWidth="1.5" />
-                  <polygon points="33,2 62,18 62,52 33,68 4,52 4,18" fill="#1b1d2c" stroke="#f59e0b" strokeWidth="4" strokeLinejoin="round" />
-                  <polygon points="33,7 57,20 57,50 33,63 9,50 9,20" fill="#1e2133" stroke="#fbbf24" strokeWidth="1.5" strokeOpacity="0.8" strokeLinejoin="round" />
-                  <path d="M12 48 L33 60 L54 48" fill="none" stroke="#b45309" strokeWidth="2.5" />
+              {/* Golden Level Hexagon Badge */}
+              <div className="relative z-20 flex h-[76px] w-[66px] shrink-0 items-center justify-center -mr-3 filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.7)]">
+                <svg viewBox="0 0 64 72" className="absolute inset-0 h-full w-full">
+                  {/* Left bottom wing tab */}
+                  <polygon points="10,48 2,48 4,53 10,53" fill="#f59e0b" />
+                  <polygon points="4,53 2,48 4,56 9,54" fill="#b45309" />
+
+                  {/* Right bottom wing tab */}
+                  <polygon points="54,48 62,48 60,53 54,53" fill="#f59e0b" />
+                  <polygon points="60,53 62,48 60,56 55,54" fill="#b45309" />
+
+                  {/* 3D Bottom Bevel Shadow under bottom point */}
+                  <path
+                    d="M8 50 L32 66 L56 50"
+                    fill="none"
+                    stroke="#b45309"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+
+                  {/* Outer Hexagon with Thick Gold Border */}
+                  <polygon
+                    points="32,5 56,17 56,49 32,63 8,49 8,17"
+                    fill="#181a29"
+                    stroke="#f59e0b"
+                    strokeWidth="4.5"
+                    strokeLinejoin="round"
+                  />
+
+                  {/* Inner Stitched / Dotted Accent Outline */}
+                  <polygon
+                    points="32,9 52,19 52,47 32,59 12,47 12,19"
+                    fill="#1b1d2e"
+                    stroke="#fbbf24"
+                    strokeWidth="1.2"
+                    strokeDasharray="2.5 1.5"
+                    strokeLinejoin="round"
+                  />
                 </svg>
-                <span className="relative z-10 text-xl font-black text-[#fbbf24] tracking-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] pb-1">
+
+                {/* Level Number */}
+                <span className="relative z-10 text-[23px] font-black text-[#fbbf24] tracking-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] pb-1">
                   {level}
                 </span>
               </div>
 
               {/* XP Track Box */}
-              <div className="relative flex flex-col justify-center rounded-r-xl bg-[#171928] border border-[#2b2f48] border-b-[3px] border-b-[#111320] pl-6 pr-4 py-2 shadow-inner min-w-[200px]">
-                <div className="flex items-center justify-between gap-3 text-xs leading-none mb-1.5">
-                  <span className="font-bold text-white tracking-wide truncate max-w-[110px]">
+              <div className="relative flex flex-col justify-center rounded-2xl bg-[#171929] border border-[#252942] border-b-[3px] border-b-[#0e101a] pl-6 pr-4 py-2 shadow-inner min-w-[260px] sm:min-w-[290px]">
+                {/* Username and XP Numbers */}
+                <div className="flex items-center justify-between gap-4 text-xs leading-none mb-1.5">
+                  <span className="font-extrabold text-white text-[13px] tracking-wide truncate max-w-[130px]">
                     {username}
                   </span>
-                  <span className="font-semibold text-zinc-400 text-[11px] whitespace-nowrap">
-                    <strong className="text-zinc-200">{currentXp}</strong> / {maxXp} XP
+                  <span className="font-bold text-zinc-300 text-[12px] whitespace-nowrap">
+                    <strong className="text-white font-extrabold">{currentXp}</strong> / {maxXp} XP
                   </span>
                 </div>
-                <div className="h-[9px] w-48 sm:w-56 rounded-full bg-[#10121d] p-[1.5px] overflow-hidden border border-[#21253a]">
+
+                {/* Golden XP Progress Bar Track */}
+                <div className="h-[8.5px] w-full rounded-full bg-[#10121d] p-[0.5px] overflow-hidden border border-[#1f2338]">
                   <div
-                    className="h-full rounded-full bg-gradient-to-r from-[#f59e0b] via-[#fbbf24] to-[#f59e0b] transition-all duration-300"
+                    className="h-full rounded-full bg-[#f59e0b] shadow-[0_0_6px_rgba(245,158,11,0.5)] transition-all duration-300"
                     style={{ width: `${xpPercentage}%` }}
                   />
                 </div>
@@ -208,23 +244,23 @@ export default function Header({
           </div>
 
           {/* ================= RIGHT SECTION: Currencies & Hamburger / Close ================= */}
-          <div className="flex items-center gap-5 sm:gap-6 z-30">
+          <div className="flex items-center gap-2 sm:gap-3.5 md:gap-5 z-30">
             {/* Gem */}
-            <div className="flex items-center gap-1.5 cursor-pointer hover:opacity-80 transition">
+            <div className="flex items-center gap-1 sm:gap-1.5 cursor-pointer hover:opacity-80 transition">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="https://zulti.com/images/landing/gem-1-ee5f2a668ec30e4530797ca75efb1ded.svg?vsn=d"
                 alt="gems"
-                style={{ height: "20px", width: "20px", display: "block" }}
+                className="h-[17px] w-[17px] sm:h-[19px] sm:w-[19px] md:h-[20px] md:w-[20px] block"
               />
-              <span style={{ fontSize: "15px", fontWeight: 700, color: "white", lineHeight: 1 }}>
+              <span className="text-[13px] sm:text-[14px] md:text-[15px] font-bold text-white leading-none">
                 {gems}
               </span>
             </div>
 
             {/* Streak Flame */}
-            <div className="flex items-center gap-1.5 cursor-pointer hover:opacity-80 transition">
-              <svg viewBox="0 0 24 24" style={{ height: "20px", width: "20px", display: "block" }} fill="none">
+            <div className="flex items-center gap-1 sm:gap-1.5 cursor-pointer hover:opacity-80 transition">
+              <svg viewBox="0 0 24 24" className="h-[17px] w-[17px] sm:h-[19px] sm:w-[19px] md:h-[20px] md:w-[20px] block" fill="none">
                 <path
                   d="M12 2C11.5 4 10.5 5.5 9 7.5C7.5 9.5 7 11.5 7 13.5C7 17.09 9.24 20 12 20C14.76 20 17 17.09 17 13.5C17 10.5 15 7.5 13.5 5C13 4 12.5 3 12 2Z"
                   fill="#f97316"
@@ -234,21 +270,21 @@ export default function Header({
                   fill="#fbbf24"
                 />
               </svg>
-              <span style={{ fontSize: "15px", fontWeight: 700, color: "white", lineHeight: 1 }}>
+              <span className="text-[13px] sm:text-[14px] md:text-[15px] font-bold text-white leading-none">
                 {streak}
               </span>
             </div>
 
             {/* Ticket */}
-            <div className="flex items-center gap-1.5 cursor-pointer hover:opacity-80 transition">
-              <svg viewBox="0 0 24 24" style={{ height: "20px", width: "20px", display: "block", transform: "rotate(-15deg)" }} fill="none">
+            <div className="flex items-center gap-1 sm:gap-1.5 cursor-pointer hover:opacity-80 transition">
+              <svg viewBox="0 0 24 24" className="h-[17px] w-[17px] sm:h-[19px] sm:w-[19px] md:h-[20px] md:w-[20px] block -rotate-12" fill="none">
                 <path
                   d="M3 8.5C3 7.4 3.9 6.5 5 6.5H19C20.1 6.5 21 7.4 21 8.5V10C19.9 10 19 10.9 19 12C19 13.1 19.9 14 21 14V15.5C21 16.6 20.1 17.5 19 17.5H5C3.9 17.5 3 16.6 3 15.5V14C4.1 14 5 13.1 5 12C5 10.9 4.1 10 3 10V8.5Z"
                   fill="#a855f7"
                 />
                 <line x1="8" y1="6.5" x2="8" y2="17.5" stroke="#c084fc" strokeWidth="1" strokeDasharray="2 2" />
               </svg>
-              <span style={{ fontSize: "15px", fontWeight: 700, color: "white", lineHeight: 1 }}>
+              <span className="text-[13px] sm:text-[14px] md:text-[15px] font-bold text-white leading-none">
                 {tickets}
               </span>
             </div>
@@ -262,10 +298,10 @@ export default function Header({
               type="button"
               aria-label={dropdownOpen ? "Close menu" : "Open navigation menu"}
               aria-expanded={dropdownOpen}
-              className="flex items-center justify-center cursor-pointer transition hover:opacity-80 active:scale-95"
+              className="flex items-center justify-center cursor-pointer transition hover:opacity-80 active:scale-95 ml-0.5 sm:ml-1"
               style={{
-                width: "24px",
-                height: "24px",
+                width: "22px",
+                height: "22px",
                 background: "none",
                 border: "none",
                 padding: 0,
@@ -273,12 +309,12 @@ export default function Header({
             >
               {dropdownOpen ? (
                 // FontAwesome faXmark
-                <svg viewBox="0 0 384 512" fill="currentColor" className="w-[19px] h-[19px] text-[#cbd5e1]">
+                <svg viewBox="0 0 384 512" fill="currentColor" className="w-[17px] h-[17px] sm:w-[19px] sm:h-[19px] text-[#cbd5e1]">
                   <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
                 </svg>
               ) : (
                 // 3-Bar Hamburger Menu
-                <div className="flex flex-col justify-center gap-[5px] w-[22px] h-[20px]">
+                <div className="flex flex-col justify-center gap-[4.5px] sm:gap-[5px] w-[20px] sm:w-[22px] h-[18px] sm:h-[20px]">
                   <span style={{ display: "block", height: "2.5px", width: "100%", borderRadius: "2px", backgroundColor: "#94a3b8" }} />
                   <span style={{ display: "block", height: "2.5px", width: "100%", borderRadius: "2px", backgroundColor: "#94a3b8" }} />
                   <span style={{ display: "block", height: "2.5px", width: "100%", borderRadius: "2px", backgroundColor: "#94a3b8" }} />
@@ -290,7 +326,7 @@ export default function Header({
           {/* ================= DROPDOWN MENU (Anchored directly under header with clean gap) ================= */}
           <div
             ref={dropdownRef}
-            className={`absolute top-[calc(100%+14px)] right-0 w-[280px] sm:w-[300px] rounded-2xl bg-[#1c2035] border border-[#2b304c] border-b-[4px] border-b-[#121422] p-3 shadow-[0_25px_60px_rgba(0,0,0,0.7)] z-50 flex flex-col gap-2 transition-all duration-200 origin-top-right ${
+            className={`absolute top-[calc(100%+12px)] sm:top-[calc(100%+14px)] right-0 w-[calc(100vw-20px)] max-w-[280px] sm:w-[300px] rounded-2xl bg-[#1c2035] border border-[#2b304c] border-b-[4px] border-b-[#121422] p-2.5 sm:p-3 shadow-[0_25px_60px_rgba(0,0,0,0.7)] z-50 flex flex-col gap-1.5 sm:gap-2 transition-all duration-200 origin-top-right ${
               dropdownOpen
                 ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
                 : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
@@ -301,12 +337,12 @@ export default function Header({
                 key={item.label}
                 type="button"
                 onClick={() => setDropdownOpen(false)}
-                className={`flex items-center gap-3.5 w-full px-4 py-3 rounded-xl transition-all text-left cursor-pointer ${item.bg}`}
+                className={`flex items-center gap-3 sm:gap-3.5 w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl transition-all text-left cursor-pointer ${item.bg}`}
               >
                 <span className={`shrink-0 flex items-center justify-center ${item.iconColor}`}>
                   {item.icon}
                 </span>
-                <span className="text-[15px] font-bold text-white tracking-wide">
+                <span className="text-[14px] sm:text-[15px] font-bold text-white tracking-wide">
                   {item.label}
                 </span>
               </button>
@@ -316,20 +352,23 @@ export default function Header({
         </div>
 
         {/* Mobile XP Bar */}
-        <div className="mt-3 flex lg:hidden items-center justify-center">
-          <div className="flex items-center gap-3 rounded-xl bg-[#171928] border border-[#2b2f48] border-b-[3px] border-b-[#111320] px-4 py-2 shadow-lg">
-            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#f59e0b] text-xs font-black text-[#1a1c2b] shadow">
+        <div className="mt-2.5 sm:mt-3.5 flex lg:hidden items-center justify-center w-full">
+          <div className="flex items-center gap-2.5 sm:gap-3 rounded-xl sm:rounded-2xl bg-[#151726] border border-[#272c48] border-b-[3px] border-b-[#0e1019] px-3.5 py-2 sm:px-4 sm:py-2.5 shadow-lg w-full max-w-[340px]">
+            <span className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg sm:rounded-xl bg-[#f59e0b] text-xs sm:text-sm font-black text-[#151726] shadow">
               {level}
             </span>
-            <div className="flex flex-col">
-              <div className="flex justify-between items-center text-xs font-bold text-white mb-1">
-                <span className="truncate max-w-[100px]">{username}</span>
-                <span className="text-[11px] font-semibold text-zinc-400 ml-3">
-                  <strong className="text-zinc-200">{currentXp}</strong> / {maxXp} XP
+            <div className="flex flex-col flex-1 min-w-0">
+              <div className="flex justify-between items-center text-xs font-bold text-white mb-1.5">
+                <span className="truncate max-w-[120px] font-extrabold text-[12px] sm:text-[13px]">{username}</span>
+                <span className="text-[11px] font-bold text-zinc-400 ml-2 sm:ml-3 shrink-0">
+                  <strong className="text-white font-extrabold">{currentXp}</strong> / {maxXp} XP
                 </span>
               </div>
-              <div className="h-2 w-36 sm:w-48 rounded-full bg-[#10121d] overflow-hidden border border-[#21253a]">
-                <div className="h-full bg-gradient-to-r from-[#f59e0b] to-[#fbbf24]" style={{ width: `${xpPercentage}%` }} />
+              <div className="h-[7.5px] sm:h-[8px] w-full rounded-full bg-[#0d0f1a] overflow-hidden border border-[#21263d] p-[1px]">
+                <div
+                  className="h-full rounded-full bg-gradient-to-r from-[#f59e0b] via-[#fbbf24] to-[#f59e0b] shadow-[0_0_8px_rgba(245,158,11,0.7)]"
+                  style={{ width: `${xpPercentage}%` }}
+                />
               </div>
             </div>
           </div>

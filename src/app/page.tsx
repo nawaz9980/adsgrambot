@@ -8,10 +8,10 @@ export default function Home() {
       {/* Header with matching exact UI & 3D chunky borders */}
       <Header
         balance={19.58}
-        level={23}
-        username="CriticalMead..."
-        currentXp={66}
-        maxXp={72}
+        level={24}
+        username="CriticalMeado..."
+        currentXp={29}
+        maxXp={79}
         gems={7}
         streak={2}
         tickets={11}
